@@ -1,10 +1,17 @@
-import { Calendar, Users, CheckSquare, ExternalLink, Edit, Share2 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import {
+  Calendar,
+  Users,
+  CheckSquare,
+  ExternalLink,
+  Edit,
+  Share2,
+} from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function SurveyCard({ survey }) {
   const navigate = useNavigate();
-  const [shareLink, setShareLink] = useState('');
+  const [shareLink, setShareLink] = useState("");
 
   // Handle actions based on survey status
   const handleViewDetails = () => {
@@ -23,21 +30,21 @@ export default function SurveyCard({ survey }) {
   const handleCopyLink = () => {
     if (shareLink) {
       navigator.clipboard.writeText(shareLink); // Copy the link to the clipboard
-      alert('Link copied to clipboard!'); // Display a confirmation message
+      alert("Link copied to clipboard!"); // Display a confirmation message
     }
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+    <div className="  transition-shadow cursor-auto">
       <div className="flex justify-between items-start mb-4">
         <h3 className="text-lg font-semibold text-gray-800">{survey.title}</h3>
         <span
           className={`px-2 py-1 rounded-full text-sm ${
-            survey.status === 'active'
-              ? 'bg-green-100 text-green-800'
-              : survey.status === 'completed'
-              ? 'bg-blue-100 text-blue-800'
-              : 'bg-gray-100 text-gray-800'
+            survey.status === "active"
+              ? "bg-green-100 text-green-800"
+              : survey.status === "completed"
+              ? "bg-blue-100 text-blue-800"
+              : "bg-gray-100 text-gray-800"
           }`}
         >
           {survey.status}
@@ -49,9 +56,9 @@ export default function SurveyCard({ survey }) {
           <Calendar size={16} className="mr-1" />
           <span>{survey.dueDate}</span>
         </div>
-        
+
         {/* Display Respondents and Completion Rate only when status is 'completed' */}
-        {survey.status === 'completed' && (
+        {survey.status === "completed" && (
           <>
             <div className="flex items-center">
               <Users size={16} className="mr-1" />
@@ -67,7 +74,7 @@ export default function SurveyCard({ survey }) {
 
       {/* Conditional Button Rendering */}
       <div className="flex justify-end gap-4">
-        {survey.status === 'completed' && (
+        {survey.status === "completed" && (
           <button
             onClick={handleViewDetails}
             className="text-indigo-600 hover:text-indigo-800 flex items-center space-x-1"
@@ -77,7 +84,7 @@ export default function SurveyCard({ survey }) {
           </button>
         )}
 
-        {survey.status === 'draft' && (
+        {survey.status === "draft" && (
           <button
             onClick={handleCreateSurvey}
             className="text-yellow-600 hover:text-yellow-800 flex items-center space-x-1"
@@ -87,7 +94,7 @@ export default function SurveyCard({ survey }) {
           </button>
         )}
 
-        {survey.status === 'active' && (
+        {survey.status === "active" && (
           <div>
             <button
               onClick={handleGenerateLink}
