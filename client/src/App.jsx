@@ -12,6 +12,9 @@ import SurveyReportPage from './components/report/SurveyReportPage';
 import QuotationForm from './components/quotation/QuotationForm';
 import ProductPricing from './components/feature/ProductPricing';
 import PaymentPage from './components/payment/PaymentPage';
+import InvoicePage from './components/surveys/InvoicePage';
+import "../src/components/Style/Print.css"
+
 
 
 function App() {
@@ -36,6 +39,7 @@ function App() {
             <Route path="/user-survey" element={<UserSurveySystem/>} />
             <Route path="/user-survey/:id" element={<UserSurveySystem/>} />
             <Route path="/quotation" element={<QuotationForm/>} />
+            <Route path="/invoice" element={<InvoicePage />} />
           </Routes>
         </main>
         <Footer />
